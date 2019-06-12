@@ -1,0 +1,2104 @@
+{
+	"info": {
+		"_postman_id": "1ccd1b03-b8ae-4111-acd9-6601b89087f7",
+		"name": "DEVWKS-2616",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cd69fad6-b63f-470a-a94b-34930b4019d8",
+						"exec": [
+							"var set_cookie = postman.getResponseHeader(\"Set-Cookie\");",
+							"var apic_cookie = set_cookie.replace(\"APIC-cookie=\", \"\").replace(\"; path=/; HttpOnly; HttpOnly; Secure\", \"\");",
+							"",
+							"postman.setEnvironmentVariable(\"APIC-cookie\", apic_cookie)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"aaaUser\":{\n    \"attributes\":{\n      \"name\": \"{{username}}\",\n      \"pwd\": \"{{password}}\"\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/api/aaaLogin.json",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"api",
+						"aaaLogin.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nodes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/nodes.json",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"nodes.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fabrics",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/fabrics.json",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"fabrics.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Protocols Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/protocols/details.json",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"protocols",
+						"details.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Protocols Resources",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/protocols/resources.json",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"protocols",
+						"resources.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Protocols Top Nodes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/protocols/topNodes.json",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"protocols",
+						"topNodes.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Protocols Top Entities",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/protocols/topEntities.json",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"protocols",
+						"topEntities.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Utilization Resources",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/utilization/resources.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"utilization",
+						"resources.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Anomalies Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/anomalies/details.json?startTs=now-2d",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"anomalies",
+						"details.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "now-2d"
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Anomalies Summary",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/anomalies/summary.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"anomalies",
+						"summary.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Events Buckets",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/events/buckets.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"events",
+						"buckets.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Events Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/events/details.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"events",
+						"details.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Events Summary",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/events/summary.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"events",
+						"summary.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fabric Anomaly Summary",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/fabricsSummary.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"fabricsSummary.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Fabric Anomaly Summary",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "DevCookie",
+								"type": "text",
+								"value": "{{APIC-cookie}}"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/fabricsSummary.json?",
+							"protocol": "https",
+							"host": [
+								"{{apic_ip}}"
+							],
+							"path": [
+								"appcenter",
+								"Cisco",
+								"NIR",
+								"api",
+								"telemetry",
+								"fabricsSummary.json"
+							],
+							"query": [
+								{
+									"key": "startTs",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endTs",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cisco APIC"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 12 Jun 2019 05:34:21 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, devcookie, APIC-challenge"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, devcookie, APIC-challenge"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST,GET,OPTIONS,DELETE"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST,GET,OPTIONS,DELETE"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubdomains"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubdomains"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache=\"Set-Cookie, Set-Cookie2\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache=\"Set-Cookie, Set-Cookie2\""
+						},
+						{
+							"key": "Client-Cert-Enabled",
+							"value": "false"
+						},
+						{
+							"key": "Client-Cert-Enabled",
+							"value": "false"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://127.0.0.1:8000"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://127.0.0.1:8000"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "false"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "false"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Health Diagnostics",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/health/collectionStats.json",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"health",
+						"collectionStats.json"
+					],
+					"query": [
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health ServiceHealth",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/health/serviceHealth.json",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"health",
+						"serviceHealth.json"
+					],
+					"query": [
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Telemetry Processes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/processes.json?nodeName=Leaf101",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"processes.json"
+					],
+					"query": [
+						{
+							"key": "nodeName",
+							"value": "Leaf101"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Utilization NodeDetails: Everything shows 0",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/utilization/nodeDetails.json?startTs=now-1d&nodeName=Leaf101",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"utilization",
+						"nodeDetails.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "now-1d"
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "nodeName",
+							"value": "Leaf101"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Utilization TopNodes: Nothing shows up",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/utilization/topNodes.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"utilization",
+						"topNodes.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stats Details: Everything shows 0",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/stats/details.json?startTs=now-2d&nodeName=Leaf104&granularity=5m",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"stats",
+						"details.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "now-2d"
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "nodeName",
+							"value": "Leaf104"
+						},
+						{
+							"key": "granularity",
+							"value": "5m"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stats Nodes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/events/nodes.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"events",
+						"nodes.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Events Nodes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR//api/telemetry/events/nodes.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"",
+						"api",
+						"telemetry",
+						"events",
+						"nodes.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Utilization FabricSummary",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/utilization/fabricSummary.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"utilization",
+						"fabricSummary.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Anomalies Event - Incomplete",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/anomalies/event.json?nodeName=Leaf101&eventName=",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"anomalies",
+						"event.json"
+					],
+					"query": [
+						{
+							"key": "nodeName",
+							"value": "Leaf101"
+						},
+						{
+							"key": "eventName",
+							"value": ""
+						},
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Anomalies TopFlows",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/anomalies/topFlows.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"anomalies",
+						"topFlows.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Anomalies TopNodes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/anomalies/topNodes.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"anomalies",
+						"topNodes.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Anomalies TopEntities",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/anomalies/topEntities.json?nodeName=apic1&startTs=now-51d",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"anomalies",
+						"topEntities.json"
+					],
+					"query": [
+						{
+							"key": "nodeName",
+							"value": "apic1"
+						},
+						{
+							"key": "startTs",
+							"value": "now-51d"
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Flows Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/flows/details.json?startTs=2019-01-24T",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"flows",
+						"details.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "2019-01-24T"
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Flows Summary",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/flows/summary.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"flows",
+						"summary.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Flows TopFlows",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/flows/topFlows.json?startTs=now-1d&endTs=now-1h",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"flows",
+						"topFlows.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "now-1d"
+						},
+						{
+							"key": "endTs",
+							"value": "now-1h"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Flows TopNodes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/flows/topNodes.json?",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"flows",
+						"topNodes.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sysStats Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/sysStats/details.json?nodeName=Leaf101&statName=memory&granularity=5m",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"sysStats",
+						"details.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "2019-01-24T",
+							"disabled": true
+						},
+						{
+							"key": "nodeName",
+							"value": "Leaf101"
+						},
+						{
+							"key": "statName",
+							"value": "memory"
+						},
+						{
+							"key": "granularity",
+							"value": "5m"
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sysStats Summary",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/sysStats/summary.json?nodeName=Leaf101&startTs=now-1d",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"sysStats",
+						"summary.json"
+					],
+					"query": [
+						{
+							"key": "nodeName",
+							"value": "Leaf101"
+						},
+						{
+							"key": "startTs",
+							"value": "now-1d"
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sysStats TopNodes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/sysStats/topNodes.json?statName=memory&granularity=5m",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"sysStats",
+						"topNodes.json"
+					],
+					"query": [
+						{
+							"key": "statName",
+							"value": "memory"
+						},
+						{
+							"key": "granularity",
+							"value": "5m"
+						},
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sysStats TopProcesses",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/sysStats/topProcesses.json?statName=memory&granularity=5m&nodeName=Leaf101",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"sysStats",
+						"topProcesses.json"
+					],
+					"query": [
+						{
+							"key": "statName",
+							"value": "memory"
+						},
+						{
+							"key": "granularity",
+							"value": "5m"
+						},
+						{
+							"key": "nodeName",
+							"value": "Leaf101"
+						},
+						{
+							"key": "startTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operations Snapshot: API Failure",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/operations/snapshot.json?ts=1d",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"operations",
+						"snapshot.json"
+					],
+					"query": [
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "ts",
+							"value": "1d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operations SnapshotDiff: API validation failed",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/operations/snapshotdiff.json?snapshotTs1=now-400h",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"operations",
+						"snapshotdiff.json"
+					],
+					"query": [
+						{
+							"key": "snapshotTs1",
+							"value": "now-400h"
+						},
+						{
+							"key": "endTs",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operations EPHistory: API Validation failed",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/operations/epHistory.json?endpoint=90:E2:BA:79:D9:E4&ts=1h",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"operations",
+						"epHistory.json"
+					],
+					"query": [
+						{
+							"key": "endpoint",
+							"value": "90:E2:BA:79:D9:E4"
+						},
+						{
+							"key": "ts",
+							"value": "1h"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operations configDiff: API Validation failed",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DevCookie",
+						"type": "text",
+						"value": "{{APIC-cookie}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic_ip}}/appcenter/Cisco/NIR/api/telemetry/operations/configDiff.json?startTs=now-2d&endTs=now-5s",
+					"protocol": "https",
+					"host": [
+						"{{apic_ip}}"
+					],
+					"path": [
+						"appcenter",
+						"Cisco",
+						"NIR",
+						"api",
+						"telemetry",
+						"operations",
+						"configDiff.json"
+					],
+					"query": [
+						{
+							"key": "startTs",
+							"value": "now-2d"
+						},
+						{
+							"key": "endTs",
+							"value": "now-5s"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
